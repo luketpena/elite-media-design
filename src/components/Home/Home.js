@@ -8,7 +8,9 @@ import About from '../About/About';
 import Services from '../Services/Services';
 import InstagramFeed from '../InstagramFeed/InstagramFeed';
 import Contact from '../Contact/Contact';
+import ContactInfo from '../ContactInfo/ContactInfo';
 import Clients from '../Clients/Clients';
+import Map from '../Map/Map';
 import Footer from '../Footer/Footer';
 
 import bkg_about from '../../images/bkg_about.jpg';
@@ -41,7 +43,16 @@ export default function Home() {
 
       <FadeBlock myId="contact" background={bkg_contact} align="center">
         <Contact />
+        <Map 
+          isMarkerShown
+          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPuL3ma1hWgwyt3zirGxazZHABROjWyd0&v=3.exp&libraries=geometry,drawing,places"
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `400px` }} />}
+          mapElement={<div style={{ height: `100%` }} />}
+        />
+        <ContactInfo />
       </FadeBlock>
+
 
       <Footer/>
     </div>

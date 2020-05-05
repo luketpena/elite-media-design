@@ -21,6 +21,8 @@ router.get('/' , async (req,res)=>{
 
   This route worked locally at first, but then started returning an HTML file instead of a JSON file. It currently still
   worked on deployment in Heroku.
+
+  UPDATE: it no longer works on Heroku. It seems after you hit it from one location a number of times, it stops working.
 */
 
 module.exports = router;
