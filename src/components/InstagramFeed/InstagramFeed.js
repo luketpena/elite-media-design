@@ -3,13 +3,21 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 const Container = styled.div`
-  height: 100vh;
+  height: max-content;
+  text-align: center;
+  .text {
+    margin: 0 auto 50px auto;
+    display: block;
+  }
+  .biography {
+    font-family: monospace;
+  }
 `;
 
 const ProfileImage = styled.img`
   border-radius: 16px;
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   margin: 0 auto;
   display: block;
 `;
@@ -21,6 +29,8 @@ const Gallery = styled.div`
   position: relative;
   overflow-y: scroll;
   height: 80vh;
+  border-radius: 50px 0 0 50px;
+
 `;
 
 const GalleryCard = styled.img`
@@ -42,22 +52,28 @@ const GalleryCard = styled.img`
   }
 `;
 
+
 export default function InstgramFeed() {
 
   let [data, setData] = useState({});
 
   useEffect(()=>{
-
     async function getInstagramData() {
       const result = await axios.get('/api/instagram');
-      console.log(result.data);
       await setData(result.data);
       return result;
     }
-
-    getInstagramData();
-    
+    getInstagramData();  
   },[]);
+
+  function renderAccountTitle() {
+    return (
+      <>
+        {(data.profile_pic_url_hd? <ProfileImage src={data.profile_pic_url_hd} alt={`The Instagram profile image for ${data.full_name}`}/> : <></>)}
+        {(data.biography? <p className="text biography">{data.biography}</p> : <></>)}
+      </>
+    )
+  }
 
   function renderGallery() {
     if (data && data.edge_owner_to_timeline_media && data.edge_owner_to_timeline_media.edges) {
@@ -75,14 +91,14 @@ export default function InstgramFeed() {
       console.log(finishedGallery);
       return finishedGallery;
       
-    }
-    
+    }   
   }
 
   return (
     <Container>
       <h2>Social Media</h2>
-      <ProfileImage src={data.profile_pic_url_hd} alt={`The Instagram profile image for ${data.full_name}`}/>
+      <p className="text">Social media can be complicated, and that's why we're here to help. Take a look at this live feed from an account we helped set up.</p>
+      {renderAccountTitle()}
       <Gallery>
         {renderGallery()}
       </Gallery>

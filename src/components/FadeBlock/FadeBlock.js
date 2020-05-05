@@ -61,13 +61,8 @@ export default function FadeBlock(props) {
 
   useEffect(()=>{
     window.addEventListener('scroll',handleScroll,true);
-    let myOffsetTop = getOffsetTop(props.myId);
-    let myOffsetHeight = document.getElementById(props.myId).offsetHeight;
-    let fadeBorder = window.innerHeight*.3;
-    setScrollY(window.scrollY);
-    setY(myOffsetTop);
-    setTop(myOffsetTop+fadeBorder);
-    setBottom(myOffsetTop+myOffsetHeight-fadeBorder);
+    window.addEventListener('resize',getSizes,true);
+    getSizes();
   },[]);
 
   function handleScroll() {
@@ -75,11 +70,20 @@ export default function FadeBlock(props) {
     setScrollY(currentScroll);
   }
 
+  function getSizes() {
+    let myOffsetTop = getOffsetTop(props.myId);
+    let myOffsetHeight = document.getElementById(props.myId).offsetHeight;
+    let fadeBorder = window.innerHeight*.3;
+    setScrollY(window.scrollY);
+    setY(myOffsetTop);
+    setTop(myOffsetTop+fadeBorder);
+    setBottom(myOffsetTop+myOffsetHeight-fadeBorder);
+  }
+
   return (
     <Container id={props.myId} background={props.background} align={props.align}>
       <FadeBkg active={(scrollY+window.innerHeight)>top && (scrollY<bottom)}/>
       <Content active={(scrollY+window.innerHeight)>top && (scrollY<bottom)}>
-        
         {props.children}
       </Content>
     </Container>
