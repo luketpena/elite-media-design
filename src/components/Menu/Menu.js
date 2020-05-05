@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faBars, faTimes} from '@fortawesome/free-solid-svg-icons';
 
+import { Link } from "react-scroll";
+
 /*-----< Styling >-----*/
 const ContainerDesktop = styled.nav`
   
@@ -25,13 +27,12 @@ const ContainerDesktop = styled.nav`
 
   transition: all .5s;
 
-  nav ul {
-    list-style: none;
+  nav .menu-item {
     margin: 0;
     padding: 0;
   }
   
-  nav li {
+  nav .menu-item {
     display: inline;
     margin-right: 16px;
     color: white;
@@ -41,7 +42,7 @@ const ContainerDesktop = styled.nav`
     cursor: pointer;
   }
   
-  nav li:hover {
+  nav .menu-item:hover {
     border-bottom: 2px solid rgba(255,255,255,1);
   }
 `;
@@ -56,8 +57,7 @@ const ContainerMobile = styled.nav`
   transition: width .5s;
 
   .icon {
-    color: ${props=>( (props.scrollY>props.point-24 && !props.active)? 'var(--col-primary)' : 'white')};
-    transition: color, .2s;
+    color: white;
     font-size: 2em;
     margin: 8px;
     position: absolute;
@@ -68,7 +68,7 @@ const ContainerMobile = styled.nav`
   }
 
   .menu-list {
-    background-color: rgba(165, 42, 42, .9);
+    background-color: rgba(0,47,108, .9);
     backdrop-filter: blur(16px);
     height: 100%;  
     position: relative;
@@ -79,33 +79,35 @@ const ContainerMobile = styled.nav`
     flex-direction: column;
     justify-content: center;
   }
-`;
 
-const MobileMenuItem = styled.a`
-  display: block;
-  background-color: rgba(255,255,255,.1);
-  position: relative;
-  right: 0;
-  padding: 16px;
-  margin: 4px 0;
-  color: white;
-  font-size: 1.2em;
-  text-align: center;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  .menu-item {
+    font-family: var(--font-main);
+    font-size: 1.25em;
+    display: block;
+    background-color: rgba(255,255,255,.1);
+    position: relative;
+    right: 0;
+    padding: 16px;
+    margin: 4px 0;
+    color: white;
+    font-size: 1.2em;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 `;
-
 
 /*-----< Static Variables >-----*/
 const menuList = [
-  {name: 'Home', url: '/'},
-
+  {name: 'Top', href: 'top'},
+  {name: 'About', href: 'about'},
+  {name: 'Services', href: 'services'},
+  {name: 'Social Media', href: 'instagram'},
+  {name: 'Contact', href: 'contact'}
 ]
 
 /*-----< Component Function >-----*/
-export default function Menu(props) {
-
-  const history = useHistory();
+export default function Menu() {
 
   let [scrollY, setScrollY] = useState(0);
   let [mount, setMount] = useState(false);
@@ -124,21 +126,38 @@ export default function Menu(props) {
     setScrollY(window.scrollY);
   }
 
-  function navigate(url) {
-    // history.push(url);
-    setMenuActive(false);
-    window.scrollTo(0,0);
-  }
-
   function renderDesktopMenu() {
     return menuList.map( (item,i)=>{
-      return <li key={i} onClick={()=>navigate(item.url)}>{item.name}</li>
+      return <Link
+          key={i}
+          className="menu-item"
+          activeClass="active"
+          to={item.href}
+          spy={true}
+          smooth={true}
+          offset={-64}
+          duration= {1000}
+        >
+        {item.name}
+      </Link>
     })
   }
 
   function renderMobileMenu() {
     return menuList.map( (item,i)=>{
-      return <MobileMenuItem key={i} onClick={()=>navigate(item.url)}>{item.name}</MobileMenuItem>
+      return <Link
+      key={i}
+      className="menu-item"
+      activeClass="active"
+      to={item.href}
+      spy={true}
+      smooth={true}
+      offset={-64}
+      duration= {1000}
+      onClick={()=>setMenuActive(false)}
+    >
+    {item.name}
+  </Link>
     })
   }
 
@@ -147,9 +166,7 @@ export default function Menu(props) {
       return (
         <ContainerDesktop id="menu" scrollY={scrollY} point={window.innerHeight*.1}>
           <nav>
-            <ul>
               {renderDesktopMenu()}
-            </ul>
           </nav>
         </ContainerDesktop>
       )

@@ -83,7 +83,7 @@ export default function InstgramFeed() {
     if (data && data.edge_owner_to_timeline_media && data.edge_owner_to_timeline_media.edges) {
       let galleryArray = [];
       
-      for (var i=0; i<10; i++) {
+      for (var i=0; i<galleryArray.length; i++) {
         galleryArray.push(data.edge_owner_to_timeline_media.edges[i].node);
       }
 

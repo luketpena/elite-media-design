@@ -15,4 +15,12 @@ router.get('/' , async (req,res)=>{
   }
 });
 
+/*
+  The /?__a=1 method is deprecated and somewhat unreliable. Facebook has been phasing this feature out since 2018 and now
+  requires an API set up that is authorized by the user to access that information.
+
+  This route worked locally at first, but then started returning an HTML file instead of a JSON file. It currently still
+  worked on deployment in Heroku.
+*/
+
 module.exports = router;
