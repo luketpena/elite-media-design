@@ -23,14 +23,18 @@ const ProfileImage = styled.img`
 `;
 
 const Gallery = styled.div`
-  display: flex;
-  flex-direction: vertical;
-  flex-wrap: wrap;
-  position: relative;
+  
   overflow-y: scroll;
   height: 80vh;
   border-radius: 50px 0 0 50px;
+`;
 
+const GalleryContent = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  width: 100%;
+  height: max-content;
 `;
 
 const GalleryCard = styled.img`
@@ -97,10 +101,12 @@ export default function InstgramFeed() {
   return (
     <Container>
       <h2>Social Media</h2>
-      <p className="text">Social media can be complicated, and that's why we're here to help. Take a look at this live feed from an account we helped set up.</p>
+      <p className="text">Follow us on Instagram to keep up with what we have going on.</p>
       {renderAccountTitle()}
       <Gallery>
-        {renderGallery()}
+        <GalleryContent>
+          {renderGallery()}
+        </GalleryContent>
       </Gallery>
     </Container>
   )

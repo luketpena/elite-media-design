@@ -20,7 +20,7 @@ export default function Home() {
     <div>
       <HomeLanding />
 
-      <FadeBlock myId="about" background={bkg_about} align="flex-start">
+      <FadeBlock myId="about" background={bkg_about} align="center">
         <About />
       </FadeBlock>
 
