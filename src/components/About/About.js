@@ -6,6 +6,8 @@ export default function About() {
       <h2><span className="highlight">Who</span> are we?</h2>
       <p>Back in 2005, two college roommates had a shared vision: to build a company that could handle all things web related.</p>
       <p>Since our humble origins in a garage, we have grown into a company of over 30 makers located in the heart of downtown Minneapolis.</p>
+      <p>We strive to deliver value in our service, and to understand with respect all of our clients needs and to provide a partnership that is created when we host our clients web services, develop their site, market their product/service or simply give them advice.</p>
+      <p>Our vision is to create a business world full of prosperity, meaning, and connection for all.</p>
     </div>
   )
 }
