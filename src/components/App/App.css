@@ -10,13 +10,24 @@
   src: local('Montseratt-Regular'), url('../../fonts/Montserrat-Regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'MontserratSubrayada-Bold';
+  font-weight: 5;
+  src: local('MontserratSubrayada-Bold'), url('../../fonts/MontserratSubrayada-Bold.ttf') format('truetype');
+}
+
 :root {
   --color-primary: #002f6c;
   --color-primary-dark: #000F38;
   --color-secondary: #F0AD4E;
   --font-main: 'Montseratt-Regular', sans-serif;
+  --font-title: 'MontserratSubrayada-Bold', sans-serif;
 }
 
 body {
   background-color: var(--color-primary-dark);
+}
+
+.highlight {
+  color: var(--color-secondary);
 }

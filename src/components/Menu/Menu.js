@@ -7,7 +7,7 @@ import {faBars, faTimes} from '@fortawesome/free-solid-svg-icons';
 /*-----< Styling >-----*/
 const ContainerDesktop = styled.nav`
   
-  font-family: var(--font-title);
+  font-family: var(--font-main);
   line-height: 64px;
   height: 64px;
   width: 100%;
@@ -17,7 +17,7 @@ const ContainerDesktop = styled.nav`
   padding-left: 16px;
   z-index: 10;
 
-  background-color: rgba(165, 42, 42, ${props=>(props.scrollY>props.point? '.7' : '0')});
+  background-color: rgba(0,47,108, ${props=>(props.scrollY>props.point? '.7' : '0')});
   backdrop-filter: blur(${props=>(props.scrollY>props.point? '16' : '0')}px);
   box-shadow: 0 4px 32px 2px rgba(0,0,0,${props=>(props.scrollY>props.point? '.3' : '0')});
   
@@ -34,15 +34,14 @@ const ContainerDesktop = styled.nav`
   nav li {
     display: inline;
     margin-right: 16px;
-    color: #EEE;
+    color: white;
     transition: all .2s;
     border-bottom: 0px solid rgba(255,255,255,0);
-    text-shadow: 0 0 4px black;
+    font-size: 1.25em;
+    cursor: pointer;
   }
   
   nav li:hover {
-    color: white;
-    cursor: pointer;
     border-bottom: 2px solid rgba(255,255,255,1);
   }
 `;

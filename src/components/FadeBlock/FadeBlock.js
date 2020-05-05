@@ -4,14 +4,38 @@ import styled from 'styled-components';
 import getOffsetTop from '../../modules/getOffsetTop';
 
 const Container = styled.div`
-  position: relative;
-  min-height: 100vh;
+  background-image: url(${props=>props.background});
+  background-size: cover;
+  background-attachment: fixed;
+
+  min-height: 50vh;
+  display: flex;
+  justify-content: ${props=>props.align};
+  align-items: center;
 `;
 
 const Content = styled.div`
-  positive: relative;
   opacity: ${props=>(props.active? '1' : '0')};
-  transition: opacity .5s;
+  top: ${props=>(props.active? '0' : '-50')}px;
+
+  transition: opacity .5s, top 1s;
+  padding: 50px;
+
+  h2 {
+    text-align: center;
+    font-family: var(--font-title);
+    color: white;
+    font-size: 3em;
+  }
+
+  p {
+    text-align: center;
+    font-family: var(--font-main);
+    font-size: 1.25em;
+    color: white;
+    margin: 50px 0;
+    max-width: 500px;
+  }
 `;
 
 export default function FadeBlock(props) {
@@ -25,7 +49,8 @@ export default function FadeBlock(props) {
     window.addEventListener('scroll',handleScroll,true);
     let myOffsetTop = getOffsetTop(props.myId);
     let myOffsetHeight = document.getElementById(props.myId).offsetHeight;
-    let fadeBorder = window.innerHeight/3;
+    let fadeBorder = window.innerHeight*.3;
+    setScrollY(window.scrollY);
     setY(myOffsetTop);
     setTop(myOffsetTop+fadeBorder);
     setBottom(myOffsetTop+myOffsetHeight-fadeBorder);
@@ -37,7 +62,7 @@ export default function FadeBlock(props) {
   }
 
   return (
-    <Container id={props.myId}>
+    <Container id={props.myId} background={props.background} align={props.align}>
       <Content active={(scrollY+window.innerHeight)>top && (scrollY<bottom)}>
         {props.children}
       </Content>
