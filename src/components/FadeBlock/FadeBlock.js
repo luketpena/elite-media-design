@@ -12,6 +12,8 @@ const Container = styled.div`
   display: flex;
   justify-content: ${props=>props.align};
   align-items: center;
+
+  position: relative;
 `;
 
 const Content = styled.div`
@@ -20,6 +22,7 @@ const Content = styled.div`
 
   transition: opacity .5s, top 1s;
   padding: 50px;
+  position: relative;
 
   h2 {
     text-align: center;
@@ -36,6 +39,17 @@ const Content = styled.div`
     margin: 50px 0;
     max-width: 500px;
   }
+`;
+
+const FadeBkg = styled.div`
+  background-color: rgba(0,0,0,.5);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: ${props=>(props.active? '1' : '0')}; 
+  transition: opacity 1s;
 `;
 
 export default function FadeBlock(props) {
@@ -63,7 +77,9 @@ export default function FadeBlock(props) {
 
   return (
     <Container id={props.myId} background={props.background} align={props.align}>
+      <FadeBkg active={(scrollY+window.innerHeight)>top && (scrollY<bottom)}/>
       <Content active={(scrollY+window.innerHeight)>top && (scrollY<bottom)}>
+        
         {props.children}
       </Content>
     </Container>
