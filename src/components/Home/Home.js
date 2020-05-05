@@ -55,8 +55,8 @@ export default function Home() {
         <ContactInfo />
       </FadeBlock>
 
-
       <Footer/>
+      
     </div>
   )
 }

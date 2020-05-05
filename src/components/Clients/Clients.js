@@ -56,8 +56,6 @@ const clientArray = [
   }
 ]
 
-
-
 export default function Clients() {
 
   function renderClients() {
