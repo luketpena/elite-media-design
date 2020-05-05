@@ -14,6 +14,7 @@ import bkg_about from '../../images/bkg_about.jpg';
 import bkg_services from '../../images/bkg_services.jpg';
 import bkg_instagram from '../../images/bkg_instagram.jpg';
 import bkg_contact from '../../images/bkg_contact.jpg';
+import bkg_clients from '../../images/bkg_clients.jpg';
 
 export default function Home() {
 
@@ -29,7 +30,7 @@ export default function Home() {
         <Services />
       </FadeBlock>
 
-      <FadeBlock myId="clients" background={bkg_about} align="center">
+      <FadeBlock myId="clients" background={bkg_clients} align="center">
         <Clients />
       </FadeBlock>
 

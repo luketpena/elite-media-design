@@ -102,6 +102,7 @@ const menuList = [
   {name: 'Top', href: 'top'},
   {name: 'About', href: 'about'},
   {name: 'Services', href: 'services'},
+  {name: 'Clients', href: 'clients'},
   {name: 'Social Media', href: 'instagram'},
   {name: 'Contact', href: 'contact'}
 ]
@@ -152,7 +153,7 @@ export default function Menu() {
       to={item.href}
       spy={true}
       smooth={true}
-      offset={-64}
+      offset={0}
       duration= {1000}
       onClick={()=>setMenuActive(false)}
     >
