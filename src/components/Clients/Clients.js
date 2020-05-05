@@ -24,7 +24,7 @@ const ClientCard = styled.img`
   transition: transform .2s;
 
   &:hover {
-    transform: scale(1.2git a);
+    transform: scale(1.2);
   }
 `;
 

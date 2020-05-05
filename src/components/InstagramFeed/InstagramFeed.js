@@ -73,7 +73,7 @@ export default function InstgramFeed() {
   function renderAccountTitle() {
     return (
       <>
-        {(data.profile_pic_url_hd? <ProfileImage src={data.profile_pic_url_hd} alt={`The Instagram profile image for ${data.full_name}`}/> : <></>)}
+        {(data.profile_pic_url_hd? <a href="https://www.instagram.com/goblue42agency/" target="_blank" rel="noopener noreferrer"><ProfileImage src={data.profile_pic_url_hd} alt={`The Instagram profile image for ${data.full_name}`}/></a> : <></>)}
         {(data.biography? <p className="text biography">{data.biography}</p> : <></>)}
       </>
     )
