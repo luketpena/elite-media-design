@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 5000;
 //const sessionMiddleware = require('./modules/session-middleware');
 //const passport = require('./strategies/user.strategy');
 
-// const eventsRouter = require('./routers/events.router');
+const instagramRouter = require('./routers/instagram.router');
 
 
 /* ---------- MIDDLEWARE ---------- */
@@ -19,8 +19,7 @@ app.use(express.static('build'));
 // app.use(passport.session());
 
 /** ---------- EXPRESS ROUTES ---------- **/
-// app.use('/events', eventsRouter);
-
+app.use('/api/instagram', instagramRouter);
 
 /** ---------- START SERVER ---------- **/
 app.listen(PORT, () => {

@@ -12,6 +12,11 @@
 
 :root {
   --color-primary: #002f6c;
+  --color-primary-dark: #000F38;
   --color-secondary: #F0AD4E;
   --font-main: 'Montseratt-Regular', sans-serif;
+}
+
+body {
+  background-color: var(--color-primary-dark);
 }

@@ -1,12 +1,25 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
-import logo from '../../images/logo.svg';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { Switch } from 'react-router';
 
-export default function App() {
-  return (
-    <div className="App">
-      <h1>Hello, world.</h1>
-      <img src={logo} alt="EMD Logo"/>
-    </div>
-  );
+import Menu from '../Menu/Menu';
+
+import Home from '../Home/Home';
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <Router>
+          <Menu />
+          <Switch>
+            <Route path="/" component={Home}/>
+          </Switch>
+        </Router>
+      </div>
+    );
+  }
 }
+
+export default App;
