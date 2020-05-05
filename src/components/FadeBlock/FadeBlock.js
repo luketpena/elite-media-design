@@ -21,8 +21,9 @@ const Content = styled.div`
   top: ${props=>(props.active? '0' : '-50')}px;
 
   transition: opacity .5s, top 1s;
-  padding: 50px;
+  padding: 64px;
   position: relative;
+  width: 100%;
 
   h2 {
     text-align: center;

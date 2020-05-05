@@ -1,15 +1,18 @@
 import React from 'react';
 
-import HomeLanding from './HomeLanding';
-import InstagramFeed from '../InstagramFeed/InstagramFeed';
+
 import FadeBlock from '../FadeBlock/FadeBlock';
 
+import HomeLanding from './HomeLanding';
 import About from '../About/About';
 import Services from '../Services/Services';
+import InstagramFeed from '../InstagramFeed/InstagramFeed';
+import Contact from '../Contact/Contact';
 
 import bkg_about from '../../images/bkg_about.jpg';
 import bkg_services from '../../images/bkg_services.jpg';
 import bkg_instagram from '../../images/bkg_instagram.jpg';
+import bkg_contact from '../../images/bkg_contact.jpg';
 
 export default function Home() {
 
@@ -27,6 +30,10 @@ export default function Home() {
 
       <FadeBlock myId="instagram" background={bkg_instagram} align="center">
         <InstagramFeed />
+      </FadeBlock>
+
+      <FadeBlock myId="contact" background={bkg_contact} align="center">
+        <Contact />
       </FadeBlock>
     </div>
   )
