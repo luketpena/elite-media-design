@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 import styled from 'styled-components';
 
 import getOffsetTop from '../../modules/getOffsetTop';
@@ -7,6 +7,7 @@ const Container = styled.div`
   background-image: url(${props=>props.background});
   background-size: cover;
   background-attachment: fixed;
+  background-position: center;
 
   min-height: 50vh;
   display: flex;
@@ -59,6 +60,18 @@ export default function FadeBlock(props) {
   const [top, setTop] = useState(0);
   const [bottom, setBottom] = useState(0);
 
+  const getSizes = useCallback(
+    ()=> {
+      let myOffsetTop = getOffsetTop(props.myId);
+      let myOffsetHeight = document.getElementById(props.myId).offsetHeight;
+      let fadeBorder = window.innerHeight*.3;
+      setScrollY(window.scrollY);
+      setTop(myOffsetTop+fadeBorder);
+      setBottom(myOffsetTop+myOffsetHeight-fadeBorder);
+    },
+    [props.myId]
+  );
+
   useEffect(()=>{
     window.addEventListener('scroll',handleScroll,true);
     window.addEventListener('resize',getSizes,true);
@@ -68,15 +81,6 @@ export default function FadeBlock(props) {
   function handleScroll() {
     let currentScroll = window.scrollY;
     setScrollY(currentScroll);
-  }
-
-  function getSizes() {
-    let myOffsetTop = getOffsetTop(props.myId);
-    let myOffsetHeight = document.getElementById(props.myId).offsetHeight;
-    let fadeBorder = window.innerHeight*.3;
-    setScrollY(window.scrollY);
-    setTop(myOffsetTop+fadeBorder);
-    setBottom(myOffsetTop+myOffsetHeight-fadeBorder);
   }
 
   return (

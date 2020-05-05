@@ -25,7 +25,8 @@ const Container = styled.div`
   }
   h3 {
     font-size: 2em;
-    font-family: var(--font-main);
+    font-family: var(--font-thin);
+    font-weight: lighter;
   }
   p {
     font-size: 1.25em;

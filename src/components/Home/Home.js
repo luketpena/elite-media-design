@@ -43,6 +43,8 @@ export default function Home() {
 
       <FadeBlock myId="contact" background={bkg_contact} align="center">
         <Contact />
+        
+        {/* I know having the API key exposed here is bad. I'm just short on time and wanted it */}
         <Map 
           isMarkerShown
           googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPuL3ma1hWgwyt3zirGxazZHABROjWyd0&v=3.exp&libraries=geometry,drawing,places"

@@ -13,6 +13,12 @@
 }
 
 @font-face {
+  font-family: 'Montserrat-Thin';
+  font-weight: 5;
+  src: local('Montseratt-Thin'), url('../../fonts/Montserrat-Thin.ttf') format('truetype');
+}
+
+@font-face {
   font-family: 'MontserratSubrayada-Bold';
   font-weight: 5;
   src: local('MontserratSubrayada-Bold'), url('../../fonts/MontserratSubrayada-Bold.ttf') format('truetype');
@@ -24,6 +30,7 @@
   --color-secondary: #F0AD4E;
   --font-main: 'Montseratt-Regular', sans-serif;
   --font-title: 'MontserratSubrayada-Bold', sans-serif;
+  --font-thin: 'Montseratt-Thin', sans-serif;
 }
 
 body {
