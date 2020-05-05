@@ -87,12 +87,9 @@ export default function InstgramFeed() {
         galleryArray.push(data.edge_owner_to_timeline_media.edges[i].node);
       }
 
-      let finishedGallery = galleryArray.map( (edge,i)=>{
-        console.log('url:',edge);
-        
+      let finishedGallery = galleryArray.map( (edge,i)=>{   
         return <GalleryCard key={i} src={edge.display_url} alt={edge.title}/>
       });
-      console.log(finishedGallery);
       return finishedGallery;
       
     }   

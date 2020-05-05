@@ -11,6 +11,11 @@ const Container = styled.header`
   display: flex;
   justify-content: center;
   padding-top: 64px;
+
+  h1 {
+    position: absolute;
+    opacity: 0;
+  }
 `;
 
 const Logo = styled.img`
@@ -23,6 +28,7 @@ export default function Landing() {
 
   return (
     <Container id="top">
+      <h1>Elite Media Design</h1>
       <Logo src={logo} alt="Elite Media Design" />
     </Container>
   );

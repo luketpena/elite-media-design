@@ -1,6 +1,5 @@
 module.exports = function getOffsetTop( elem ) {
   let targetElem = document.getElementById(elem);
-  console.log(targetElem);
   
   if (targetElem) { 
   let offsetTop = 0;

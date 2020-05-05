@@ -56,7 +56,6 @@ const FadeBkg = styled.div`
 export default function FadeBlock(props) {
 
   const [scrollY, setScrollY] = useState(0);
-  const [y, setY] = useState(0);
   const [top, setTop] = useState(0);
   const [bottom, setBottom] = useState(0);
 
@@ -64,7 +63,7 @@ export default function FadeBlock(props) {
     window.addEventListener('scroll',handleScroll,true);
     window.addEventListener('resize',getSizes,true);
     getSizes();
-  },[]);
+  },[getSizes]);
 
   function handleScroll() {
     let currentScroll = window.scrollY;
@@ -76,7 +75,6 @@ export default function FadeBlock(props) {
     let myOffsetHeight = document.getElementById(props.myId).offsetHeight;
     let fadeBorder = window.innerHeight*.3;
     setScrollY(window.scrollY);
-    setY(myOffsetTop);
     setTop(myOffsetTop+fadeBorder);
     setBottom(myOffsetTop+myOffsetHeight-fadeBorder);
   }

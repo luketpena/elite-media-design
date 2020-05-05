@@ -9,6 +9,7 @@ import Services from '../Services/Services';
 import InstagramFeed from '../InstagramFeed/InstagramFeed';
 import Contact from '../Contact/Contact';
 import Clients from '../Clients/Clients';
+import Footer from '../Footer/Footer';
 
 import bkg_about from '../../images/bkg_about.jpg';
 import bkg_services from '../../images/bkg_services.jpg';
@@ -41,6 +42,8 @@ export default function Home() {
       <FadeBlock myId="contact" background={bkg_contact} align="center">
         <Contact />
       </FadeBlock>
+
+      <Footer/>
     </div>
   )
 }
